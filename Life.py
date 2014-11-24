@@ -37,17 +37,7 @@ class Life:
         self.matrix[x][y]=cell
         if cell.status == 1: 
             self.population_count += 1
-    
-    #def print_int_matrix (self):
-    #   '''
-    #    used for debugging
-    #    '''
-    #    print()
-    #    for i in self.int_matrix: 
-    #        print ()
-    #        for j in i: 
-    #            print (j, end ="")
-    #    print("\n\n")
+
 
     def print_matrix(self):
         '''
