@@ -163,6 +163,5 @@ class TestLife (TestCase):
         x.print_matrix()
         x.run(20, [])
         self.assertEqual(x.population_count, 0)
-   
-
+  
 main()
