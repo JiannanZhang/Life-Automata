@@ -1,11 +1,4 @@
-
-#!/usr/bin/env/python3
-
-
-#RunLife.py, Esther Schenau and Jeffrey Zhang
-#Copyrighted 12 Nov 2014
-
-
+# game controller Life
 class Life:
     '''
     creates the environment for cells
@@ -110,12 +103,15 @@ class Life:
                 number_of_live_neighbors += 1
 
         if self.matrix[i][j].str_type == "Conway": 
+            # check NW,SW,SE,NE only for "Conway"
             if (x_pos_NW >= 0 and x_pos_NW < self.rows and y_pos_NW >=0 and y_pos_NW <self.cols): 
                 if self.matrix[x_pos_NW][y_pos_NW].status == 1: 
                     number_of_live_neighbors += 1 
+                    
             if (x_pos_SW >= 0 and x_pos_SW < self.rows and y_pos_SW >= 0 and y_pos_SW < self.cols): 
                 if self.matrix[x_pos_SW][y_pos_SW].status == 1: 
                     number_of_live_neighbors += 1
+                    
             if (x_pos_SE >= 0 and x_pos_SE < self.rows and y_pos_SE >=0 and y_pos_SE <self.cols): 
                 if self.matrix[x_pos_SE][y_pos_SE].status == 1: 
                     number_of_live_neighbors += 1
@@ -147,7 +143,7 @@ class Life:
 
         for num in range (1,n+1):
 
-            #Creating Integer Matrix
+            # Creating Integer Matrix (crutial part in this game)
             for i in range (self.rows): 
                 for j in range (self.cols): 
                     cell = self.matrix[i][j]
@@ -166,7 +162,6 @@ class Life:
                             self.population_count -=1
                     else: 
                         #Fredkin Cells
-
                         #if dead to live cell
                         if cell.status == 0:
                             if self.int_matrix[i][j] == 3 or self.int_matrix[i][j] == 1: 
@@ -179,7 +174,7 @@ class Life:
                                 self.population_count -= 1
                             else: 
                                 cell.age +=1 
-                        
+                        # if age is 2
                         if cell.age == 2: 
                             self.matrix [i][j] = ConwayCell(1, "Conway")
                     
@@ -188,7 +183,6 @@ class Life:
             if num in print_list:
                 print ("Generation = %s, Population = %d." %(num, self.population_count), end = "")
                 self.print_matrix()
-
 
 
 class AbstractCell:
